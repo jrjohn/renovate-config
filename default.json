@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 6am on monday"],
+  "timezone": "Asia/Taipei",
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "labels": ["renovate"],
+  "packageRules": [
+    { "matchUpdateTypes": ["patch", "minor"], "automerge": true, "platformAutomerge": true },
+    { "matchUpdateTypes": ["major"], "automerge": false, "labels": ["renovate", "major"] },
+    { "matchPackagePatterns": ["compileSdk", "targetSdk"], "automerge": false, "labels": ["renovate", "sdk-bump"] },
+    { "matchPackagePatterns": ["IPHONEOS_DEPLOYMENT_TARGET"], "automerge": false, "labels": ["renovate", "sdk-bump"] }
+  ]
+}
