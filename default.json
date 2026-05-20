@@ -6,11 +6,18 @@
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "labels": ["renovate"],
+  "ignoreUnstable": true,
+  "respectLatest": false,
   "packageRules": [
     { "matchUpdateTypes": ["patch", "minor"], "automerge": true, "platformAutomerge": true },
     { "matchUpdateTypes": ["major"], "automerge": false, "labels": ["renovate", "major"] },
     { "matchPackagePatterns": ["compileSdk", "targetSdk"], "automerge": false, "labels": ["renovate", "sdk-bump"] },
-    { "matchPackagePatterns": ["IPHONEOS_DEPLOYMENT_TARGET"], "automerge": false, "labels": ["renovate", "sdk-bump"] }
+    { "matchPackagePatterns": ["IPHONEOS_DEPLOYMENT_TARGET"], "automerge": false, "labels": ["renovate", "sdk-bump"] },
+    {
+      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
+      "matchPackagePatterns": [".*"],
+      "allowedVersions": "!/(?i)(beta|rc[0-9]*|alpha|preview|snapshot|-dp[0-9]+|-m[0-9]+|[.-]dev|nightly|canary)/"
+    }
   ],
   "customManagers": [
     {
