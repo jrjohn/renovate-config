@@ -7,6 +7,7 @@
   "labels": ["renovate"],
   "ignoreUnstable": true,
   "respectLatest": false,
+  "rebaseWhen": "behind-base-branch",
   "packageRules": [
     { "matchUpdateTypes": ["patch", "minor"], "automerge": true, "platformAutomerge": true },
     { "matchUpdateTypes": ["major"], "automerge": false, "labels": ["renovate", "major"] },
