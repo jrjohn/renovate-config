@@ -1,21 +1,63 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "timezone": "Asia/Taipei",
   "prConcurrentLimit": 1,
   "prHourlyLimit": 2,
-  "labels": ["renovate"],
+  "labels": [
+    "renovate"
+  ],
   "ignoreUnstable": true,
   "respectLatest": false,
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
-    { "matchUpdateTypes": ["patch", "minor"], "automerge": true, "platformAutomerge": true },
-    { "matchUpdateTypes": ["major"], "automerge": false, "labels": ["renovate", "major"] },
-    { "matchPackagePatterns": ["compileSdk", "targetSdk"], "automerge": false, "labels": ["renovate", "sdk-bump"] },
-    { "matchPackagePatterns": ["IPHONEOS_DEPLOYMENT_TARGET"], "automerge": false, "labels": ["renovate", "sdk-bump"] },
+    {
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": true,
+      "labels": [
+        "renovate",
+        "major"
+      ],
+      "platformAutomerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "compileSdk",
+        "targetSdk"
+      ],
+      "automerge": false,
+      "labels": [
+        "renovate",
+        "sdk-bump"
+      ]
+    },
+    {
+      "matchPackagePatterns": [
+        "IPHONEOS_DEPLOYMENT_TARGET"
+      ],
+      "automerge": false,
+      "labels": [
+        "renovate",
+        "sdk-bump"
+      ]
+    },
     {
       "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
-      "matchPackagePatterns": [".*"],
+      "matchPackagePatterns": [
+        ".*"
+      ],
       "allowedVersions": "!/(?i)(beta|rc[0-9]*|alpha|preview|snapshot|-dp[0-9]+|-m[0-9]+|[.-]dev|nightly|canary)/"
     }
   ],
@@ -23,15 +65,23 @@
     {
       "customType": "regex",
       "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* — caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
-      "fileMatch": ["(^|/)Dockerfile[^/]*$"],
-      "matchStrings": ["go install (?<depName>[^@\\s]+)@(?<currentValue>v?[0-9][^\\s\"\\\\]+)"],
+      "fileMatch": [
+        "(^|/)Dockerfile[^/]*$"
+      ],
+      "matchStrings": [
+        "go install (?<depName>[^@\\s]+)@(?<currentValue>v?[0-9][^\\s\"\\\\]+)"
+      ],
       "datasourceTemplate": "go"
     },
     {
       "customType": "regex",
       "description": "Detect `npm install <pkg>@<version>` pinned versions in Dockerfile.*",
-      "fileMatch": ["(^|/)Dockerfile[^/]*$"],
-      "matchStrings": ["npm (?:install|i) (?:--global |-g )?(?<depName>[@a-z0-9/-]+)@(?<currentValue>[^\\s\"\\\\]+)"],
+      "fileMatch": [
+        "(^|/)Dockerfile[^/]*$"
+      ],
+      "matchStrings": [
+        "npm (?:install|i) (?:--global |-g )?(?<depName>[@a-z0-9/-]+)@(?<currentValue>[^\\s\"\\\\]+)"
+      ],
       "datasourceTemplate": "npm"
     }
   ]
