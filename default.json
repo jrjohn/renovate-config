@@ -37,21 +37,23 @@
         "compileSdk",
         "targetSdk"
       ],
-      "automerge": false,
+      "automerge": true,
       "labels": [
         "renovate",
         "sdk-bump"
-      ]
+      ],
+      "platformAutomerge": true
     },
     {
       "matchPackagePatterns": [
         "IPHONEOS_DEPLOYMENT_TARGET"
       ],
-      "automerge": false,
+      "automerge": true,
       "labels": [
         "renovate",
         "sdk-bump"
-      ]
+      ],
+      "platformAutomerge": true
     },
     {
       "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
