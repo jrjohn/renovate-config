@@ -4,8 +4,8 @@
     "config:recommended"
   ],
   "timezone": "Asia/Taipei",
-  "prConcurrentLimit": 1,
-  "prHourlyLimit": 2,
+  "prConcurrentLimit": 2,
+  "prHourlyLimit": 4,
   "labels": [
     "renovate"
   ],
@@ -30,7 +30,9 @@
         "renovate",
         "major"
       ],
-      "platformAutomerge": true
+      "platformAutomerge": true,
+      "prPriority": 10,
+      "description": "Majors get queue priority so they cannot starve behind the steady minor/patch stream"
     },
     {
       "matchPackagePatterns": [
@@ -56,7 +58,7 @@
       "platformAutomerge": true
     },
     {
-      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
+      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) \u2014 calendar-version pkgs that ignoreUnstable can't classify",
       "matchPackagePatterns": [
         ".*"
       ],
@@ -66,7 +68,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* — caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
+      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* \u2014 caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
       "fileMatch": [
         "(^|/)Dockerfile[^/]*$"
       ],
