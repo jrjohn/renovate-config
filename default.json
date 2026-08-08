@@ -18,19 +18,17 @@
         "patch",
         "minor"
       ],
-      "automerge": true,
-      "platformAutomerge": true
+      "automerge": true
     },
     {
       "matchUpdateTypes": [
         "major"
       ],
-      "automerge": true,
+      "automerge": false,
       "labels": [
         "renovate",
         "major"
       ],
-      "platformAutomerge": true,
       "prPriority": 10,
       "description": "Majors get queue priority so they cannot starve behind the steady minor/patch stream"
     },
@@ -43,8 +41,7 @@
       "labels": [
         "renovate",
         "sdk-bump"
-      ],
-      "platformAutomerge": true
+      ]
     },
     {
       "matchPackagePatterns": [
@@ -54,11 +51,10 @@
       "labels": [
         "renovate",
         "sdk-bump"
-      ],
-      "platformAutomerge": true
+      ]
     },
     {
-      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) \u2014 calendar-version pkgs that ignoreUnstable can't classify",
+      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
       "matchPackagePatterns": [
         ".*"
       ],
@@ -68,7 +64,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* \u2014 caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
+      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* — caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
       "fileMatch": [
         "(^|/)Dockerfile[^/]*$"
       ],
