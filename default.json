@@ -54,17 +54,27 @@
       ]
     },
     {
-      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) — calendar-version pkgs that ignoreUnstable can't classify",
+      "description": "Skip any prerelease label (beta/rc/alpha/preview/snapshot/dp/m/dev/pre/nightly) \u2014 calendar-version pkgs that ignoreUnstable can't classify",
       "matchPackagePatterns": [
         ".*"
       ],
       "allowedVersions": "!/(?i)(beta|rc[0-9]*|alpha|preview|snapshot|-dp[0-9]+|-m[0-9]+|[.-]dev|nightly|canary)/"
+    },
+    {
+      "description": "Internal CI-built images (arcana/*) are pipeline-versioned (build-N), not external deps \u2014 don't chase them on Docker Hub (was 401-spamming every run).",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackagePatterns": [
+        "^arcana/"
+      ],
+      "enabled": false
     }
   ],
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* — caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
+      "description": "Detect `go install <module>@<version>` pinned versions in Dockerfile.* \u2014 caught arcana-cloud-go protoc-gen-go-grpc bug 2026-05-19",
       "fileMatch": [
         "(^|/)Dockerfile[^/]*$"
       ],
