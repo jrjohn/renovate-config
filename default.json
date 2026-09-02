@@ -11,6 +11,7 @@
   ],
   "ignoreUnstable": true,
   "respectLatest": false,
+  "semanticCommitType": "fix",
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
     {
