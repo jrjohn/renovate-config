@@ -60,6 +60,19 @@
         ".*"
       ],
       "allowedVersions": "!/(?i)(beta|rc[0-9]*|alpha|preview|snapshot|-dp[0-9]+|-m[0-9]+|[.-]dev|nightly|canary)/"
+    },
+    {
+      "description": "Ignore the fleet's own internal/placeholder images — they 404 (private registry / template placeholders) and fail the run rc=1 (2026-09-08)",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackagePatterns": [
+        "^arcana/",
+        "^ghcr\\.io/arcana/",
+        "your-registry\\.example\\.com",
+        "^localhost:5000/"
+      ],
+      "enabled": false
     }
   ],
   "customManagers": [
