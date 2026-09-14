@@ -12,6 +12,9 @@
   "ignoreUnstable": true,
   "respectLatest": false,
   "semanticCommitType": "fix",
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
     {
