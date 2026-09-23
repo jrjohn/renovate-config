@@ -13,7 +13,7 @@
   "respectLatest": false,
   "semanticCommitType": "fix",
   "postUpdateOptions": [
-    "gomodTidy"
+    "gomodTidyE"
   ],
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
