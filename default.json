@@ -78,6 +78,16 @@
       "enabled": false
     },
     {
+      "description": "arch-qube pin bumps",
+      "matchDepNames": [
+        "jrjohn/arcana-arch-qube"
+      ],
+      "labels": [
+        "renovate",
+        "arch-qube"
+      ]
+    },
+    {
       "description": "Every dependency update is fix(deps), so each merge cuts a release. Must be the LAST rule: config:recommended's :semanticPrefixFixDepsChoreOthers packageRules set chore for most deps and override the top-level semanticCommitType (2026-09-02 #4 never took effect: 19 of 20 PRs after it were still chore(deps)).",
       "matchPackagePatterns": [
         ".*"
@@ -107,6 +117,19 @@
         "npm (?:install|i) (?:--global |-g )?(?<depName>[@a-z0-9/-]+)@(?<currentValue>[^\\s\"\\\\]+)"
       ],
       "datasourceTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "description": "Track the arch-qube pin (tools/arch-qube.version) against arcana-arch-qube release tags, so every template follows each new arch-qube release (John 2026-11-25). Patch/minor automerge after Jenkins is green; a red build means the new rules found a real violation in that template — fix the code, never pin back.",
+      "fileMatch": [
+        "(^|/)tools/arch-qube\\.version$"
+      ],
+      "matchStrings": [
+        "^(?<currentValue>\\d+\\.\\d+\\.\\d+)\\s*$"
+      ],
+      "depNameTemplate": "jrjohn/arcana-arch-qube",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ]
 }
